@@ -22,6 +22,6 @@ loadWeather();
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  currentLocation = locationInput.value;
+  currentLocation = locationInput.value || "gurugram";
   loadWeather();
 });

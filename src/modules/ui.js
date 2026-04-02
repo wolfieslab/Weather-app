@@ -1,4 +1,14 @@
 // const locationDatetime = document.querySelector(".location-datetime");
+
+import clearDay from "../assets/images/clear-day.jpg";
+import clearNight from "../assets/images/clear-night.jpg";
+import cloudy from "../assets/images/cloudy.jpg";
+import rain from "../assets/images/rain.jpg";
+import snow from "../assets/images/snow.jpg";
+import partlyCloudyDay from "../assets/images/partly-cloudy-day.jpg";
+import partlyCloudyNight from "../assets/images/partly-cloudy-night.jpg";
+
+const weatherCard = document.querySelector(".weather-current-card");
 const locationName = document.querySelector(".location-name");
 const currentTemperature = document.querySelector(".weather-current-temperature");
 const currentFeelslikeValue = document.querySelector(".feelslike-value");
@@ -25,6 +35,16 @@ const units = {
     }
 };
 
+const backgroundMap = {
+    "clear-day": clearDay,
+    "clear-night": clearNight,
+    "rain": rain,
+    "snow": snow,
+    "cloudy": cloudy,
+    "partly-cloudy-day": partlyCloudyDay,
+    "partly-cloudy-night": partlyCloudyNight,
+};
+
 
 function displayWeatherData(data, unit) {
     const u = units[unit];    
@@ -40,6 +60,8 @@ function displayWeatherData(data, unit) {
     updateDetails(uvindex, data.uvindex, "");
     updateDetails(precipitation, data.precip ?? 0, u.precip);
     updateDetails(wind, data.windspeed, u.wind);
+
+    updateBackground(data.icon);
 }
 
 function updateDetails(element, value, unit) {
@@ -48,6 +70,11 @@ function updateDetails(element, value, unit) {
 
     valueEl.textContent = value;
     unitEl.textContent = unit;
+}
+
+function updateBackground(icon) {
+    const background = backgroundMap[icon] || "./assets/images/default.jpg";
+    weatherCard.style.backgroundImage = `url(${background})`;
 }
 
 
