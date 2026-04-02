@@ -1,0 +1,183 @@
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    font-family: sans-serif;
+    padding: 2em 0;
+    gap: 2em;
+}   
+
+
+/* HEADER  */
+header {
+    display: flex;
+    gap: 18px;
+}
+
+.search-box {
+    display: flex;
+    width: 100%;
+    font-size: 1em;
+}
+
+input.location-input {
+    flex: 1;
+    padding: 4px 8px;
+    font-size: inherit;
+    border: 1px solid #ccc;
+    background: #eee;
+    border-right: none;
+    border-radius: 1.2em 0 0 1.2em;
+}
+
+.submit-btn {
+    border: 1px solid #ccc;
+    background: #ff682d;
+    color: white;
+    font-size: inherit;
+    padding: 10px 15px;
+    border-left: none;
+    border-radius: 0 1.2em 1.2em 0;
+    cursor: pointer;
+}
+
+.toggle-unit {
+    display: flex;
+    font-size: 1em;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    background: #eee;
+    padding: 4px;
+}
+
+.toggle-unit .unit {
+    padding: 8px 16px;
+    border-radius: 16px;
+}
+
+.toggle-unit .unit.active {
+    background: #ff682d;
+    color: white;
+}
+
+main {
+    flex: 1;
+}
+
+.weather-now {
+    display: flex;
+    gap: 10px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 1em;
+}
+
+.weather-current-card {
+    display: flex;
+    font-size: 1.2em;
+    width: 400px;
+    gap: 3em;
+    flex-direction: column;
+    color: white;
+    background: url('./assets/images/anandu-vinod-pbxwxwfI0B4-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #777;
+    border-radius: 8px;
+    padding: 1.4em;
+}
+
+.current-location {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.weather-current-temperature {
+    font-size: 3.2em;
+    font-weight: 400;
+}
+
+.weather-current-temperature + div {
+    display: flex;
+    gap: 18px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-current-conditions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.weather-current-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    border: none;
+    border-radius: 10px;
+    background: #eee;
+}
+
+.text-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.text-group span {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.text-group .text {
+    font-size: 1.1em;
+}
+
+.icon {
+    width: 24px;
+    height: 24px;
+}
+
+.icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.value-group {
+    align-self: center;
+}
+
+.value-group .value {
+    font-size: 1.5em;
+}
+
+/* FOOTER */
+
+footer a {
+    text-decoration: none;
+    color: #ff682d;
+}
