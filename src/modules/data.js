@@ -27,10 +27,14 @@ function processWeatherData(data) {
     sunset,
     temp,
     uvindex,
+    cloudcover,
+    visibility,
+    precip,
+    windspeed,
   } = currentConditions;
   return {
     location: resolvedAddress,
-    currCondition: conditions,
+    currentCondition: conditions,
     description,
     humidity,
     feelslike,
@@ -39,6 +43,10 @@ function processWeatherData(data) {
     sunset,
     temperature: temp,
     uvindex,
+    cloudcover,
+    visibility,
+    precip,
+    windspeed,
   };
 }
 

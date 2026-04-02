@@ -27,6 +27,7 @@ header {
     display: flex;
     width: 100%;
     font-size: 1em;
+    justify-content: center;
 }
 
 input.location-input {
@@ -44,10 +45,16 @@ input.location-input {
     background: #ff682d;
     color: white;
     font-size: inherit;
-    padding: 10px 15px;
+    padding: 0 10px;
     border-left: none;
     border-radius: 0 1.2em 1.2em 0;
     cursor: pointer;
+}
+
+.submit-btn svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
 }
 
 .toggle-unit {
@@ -85,11 +92,11 @@ main {
 .weather-current-card {
     display: flex;
     font-size: 1.2em;
-    width: 400px;
+    min-width: 400px;
     gap: 3em;
     flex-direction: column;
     color: white;
-    background: url('./assets/images/anandu-vinod-pbxwxwfI0B4-unsplash.jpg');
+    background: url('./assets/images/default.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
