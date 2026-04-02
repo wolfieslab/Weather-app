@@ -1,18 +1,26 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'node:path';
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import path from "node:path";
 
 export default {
-    entry: {
-        app: './src/index.js',
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html',
-        }),
+  entry: {
+    app: "./src/index.js",
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
+  output: {
+    filename: "main.js",
+    path: path.resolve(import.meta.dirname, "dist"),
+    clean: true,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/i,
+        type: "asset/resource",
+      },
     ],
-    output: {
-        filename: 'main.js',
-        path: path.resolve(import.meta.dirname, 'dist'),
-        clean: true,
-    },
+  },
 };
