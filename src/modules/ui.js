@@ -7,7 +7,11 @@ import rain from "../assets/images/rain.jpg";
 import snow from "../assets/images/snow.jpg";
 import partlyCloudyDay from "../assets/images/partly-cloudy-day.jpg";
 import partlyCloudyNight from "../assets/images/partly-cloudy-night.jpg";
+import defaultBg from "../assets/images/default.jpg"
 
+
+const metricBtn = document.querySelector(".metric");
+const usBtn = document.querySelector(".us");
 const weatherCard = document.querySelector(".weather-current-card");
 const locationName = document.querySelector(".location-name");
 const currentTemperature = document.querySelector(".weather-current-temperature");
@@ -73,10 +77,15 @@ function updateDetails(element, value, unit) {
 }
 
 function updateBackground(icon) {
-    const background = backgroundMap[icon] || "./assets/images/default.jpg";
+    const background = backgroundMap[icon] || defaultBg;
     weatherCard.style.backgroundImage = `url(${background})`;
+}
+
+function changeUnitUI(unit) {
+    metricBtn.classList.toggle("active", unit === "metric");
+    usBtn.classList.toggle("active", unit === "us");
 }
 
 
 
-export { displayWeatherData } 
+export { displayWeatherData, changeUnitUI } 

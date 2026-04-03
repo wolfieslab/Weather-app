@@ -1,27 +1,34 @@
+import {
+  getActiveUnit,
+  loadWeather,
+  setCurrentLocation,
+  toggleUnit,
+} from './modules/state';
+import { changeUnitUI } from './modules/ui';
 import './styles.css';
-import { getWeatherData, processWeatherData } from './modules/data';
-import { displayWeatherData } from './modules/ui';
 
 const form = document.querySelector('form');
 const locationInput = document.querySelector('.location-input');
-
-let activeUnit = "metric";
-let currentLocation = "gurugram";
-
-async function loadWeather() {
-  const rawData = await getWeatherData(currentLocation, activeUnit);
-  const proccessedData = processWeatherData(rawData);
-
-  displayWeatherData(proccessedData, activeUnit);
-}
+const unitToggle = document.querySelector('.toggle-unit');
 
 loadWeather();
 
 /* EVENT LISTENERS */
 
+unitToggle.addEventListener('click', async (e) => {
+  if (!e.target.classList.contains('unit')) return;
+
+  toggleUnit();
+
+  const unit = getActiveUnit();
+
+  changeUnitUI(unit);
+  loadWeather();
+});
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  currentLocation = locationInput.value || "gurugram";
+  setCurrentLocation(locationInput.value);
   loadWeather();
 });
