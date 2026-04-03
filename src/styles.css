@@ -18,7 +18,14 @@ body {
 
 
 /* HEADER  */
+
 header {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+
+.header-content {
     display: flex;
     gap: 18px;
 }
@@ -193,4 +200,15 @@ main {
 footer a {
     text-decoration: none;
     color: #ff682d;
+}
+
+/* ERROR */
+
+.error-message {
+    text-align: center;
+    padding: 1em;
+    width: 500px;
+    color: #ff682d;
+    border: 1px solid #ff682d;
+    border-radius: 1em;
 }

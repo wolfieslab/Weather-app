@@ -1,3 +1,4 @@
+const headerContainer = document.querySelector("header");
 const metricBtn = document.querySelector('.metric');
 const usBtn = document.querySelector('.us');
 const weatherCard = document.querySelector('.weather-current-card');
@@ -57,13 +58,12 @@ function updateDetails(element, value, unit) {
 
 async function updateBackground(icon) {
   try {
-    const imageModule =
-      (await import(`../assets/images/${icon}.jpg`)) ||
-      import(`../assets/images/default.jpg`);
+    const imageModule = await import(`../assets/images/${icon}.jpg`);
     const imagePath = imageModule.default;
     weatherCard.style.backgroundImage = `url(${imagePath})`;
   } catch {
-    console.log('Background not found for icon', icon);
+    const fallBack = await import(`../assets/images/default.jpg`);
+    weatherCard.style.backgroundImage = `url(${fallBack.default})`;
   }
 }
 
@@ -72,4 +72,17 @@ function changeUnitUI(unit) {
   usBtn.classList.toggle('active', unit === 'us');
 }
 
-export { displayWeatherData, changeUnitUI };
+function displayError(message) {
+    const errorBox = document.createElement("div");
+    errorBox.classList.add("error-message");
+    errorBox.textContent =  message;
+    headerContainer.appendChild(errorBox);
+}
+
+function clearError() {
+    const errorMessage = document.querySelector(".error-message");
+    if(!errorMessage) return;
+    errorMessage.remove();
+}
+
+export { displayWeatherData, changeUnitUI, displayError, clearError };

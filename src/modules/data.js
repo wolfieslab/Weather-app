@@ -4,18 +4,29 @@ async function getWeatherData(location, unit) {
     const response = await fetch(url);
 
     if (!response.ok) {
+      if (response.status === 400) {
+        return {
+          error: true,
+          message: 'Location not found',
+        };
+      }
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const data = await response.json();
     return data;
   } catch (error) {
     console.error('Error fetching weather data: ', error);
-    return null;
+    return {
+      error: true,
+      message: 'Failed to fetch weather data',
+    };
   }
 }
 
 function processWeatherData(data) {
-  if (!data) return null;
+  if (!data || data.error) {
+    return data;
+  }
 
   const { resolvedAddress, description, currentConditions } = data;
   const {
@@ -50,4 +61,4 @@ function processWeatherData(data) {
   };
 }
 
-export { getWeatherData, processWeatherData }
+export { getWeatherData, processWeatherData };
